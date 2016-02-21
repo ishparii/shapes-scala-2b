@@ -9,7 +9,7 @@ object scale {
 
     case Location(x, y, shape) => Location(x/factor, y/factor, scale(shape,factor))
 
-    case Group(shapes @ _*) => Group(shapes.map(scale(_,factor)))
+    case Group(shapes @ _*) => Group(shapes.map(scale(_,factor)):_*)
 
     case _ => null
   }
