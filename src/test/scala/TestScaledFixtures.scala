@@ -2,31 +2,31 @@ package edu.luc.cs.laufer.cs372.shapes
 
 object TestScaledFixtures {
 
-  val simpleEllipseScaledByTwo = Ellipse(25, 15)
+  val simpleEllipseScaledByTwo = Ellipse(100, 60)
 
-  val simpleRectangleScaledByTwo = Rectangle(40, 60)
+  val simpleRectangleScaledByTwo = Rectangle(160, 240)
 
-  val simpleLocationScaledByTwo = Location(35, 15, Rectangle(40, 60))
+  val simpleLocationScaledByTwo = Location(140, 60, Rectangle(160, 240))
 
-  val basicGroupScaledByTwo = Group(Ellipse(25, 15), Rectangle(10, 20))
+  val basicGroupScaledByTwo = Group(Ellipse(100, 60), Rectangle(40, 80))
 
   val simpleGroupScaledByTwo = Group(
-    Location(100, 50, Ellipse(25, 15)),
-    Location(200, 150, Rectangle(50, 25))
+    Location(400, 200, Ellipse(100, 60)),
+    Location(800, 600, Rectangle(200, 100))
   )
 
   val complexGroupScaledByTwo =
-    Location(25, 50,
+    Location(100, 200,
       Group(
-        Ellipse(10, 20),
-        Location(75, 25,
+        Ellipse(40, 80),
+        Location(300, 100,
           Group(
-            Rectangle(25, 15),
-            Rectangle(150, 30),
-            Location(50, 100,
-              Ellipse(25, 15)
+            Rectangle(100, 60),
+            Rectangle(600, 120),
+            Location(200, 400,
+              Ellipse(100, 60)
             )
           )),
-        Rectangle(50, 100)
+        Rectangle(200, 400)
       ))
 }
