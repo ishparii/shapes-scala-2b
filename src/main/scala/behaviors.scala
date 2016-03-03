@@ -23,7 +23,7 @@ object behaviors {
   }
 
 
-  val scale: Int =>Algebra[ShapeF,Shape]=f=> {
+  val scale: Int => Algebra[ShapeF, Shape] = f => {
     case Rectangle(width, height) => rectangle(width * f, height * f)
     case Ellipse(majorRadius, minorRadius) => ellipse(majorRadius * f, minorRadius * f)
     case Location(x, y, shape) => location(x * f, y * f, shape)
@@ -31,11 +31,19 @@ object behaviors {
 
 
   }
-  }
 
-  //val boundingBox:Algebra[ShapeF, Location]={
-   //case Rectangle()
-  //}
+  val boundingBox: Algebra[ShapeF, Shape] = {
+    case Rectangle(width, height)=> location(0,0, rectangle(width,height))
+    case Ellipse(minorRadius,majorRadius)=> location(-minorRadius,-majorRadius, rectangle(2*minorRadius,2*majorRadius))
+    case Location(x,y,shape)=>
+      {
+        val loc=shape.asInstanceOf[Location]
+        location(x+loc.x,y+loc.y,shape)
+      }
+
+
+  }
+}
 
 
 

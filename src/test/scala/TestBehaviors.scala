@@ -41,4 +41,8 @@ class TestBehaviors extends FunSuite {
     TestFixtures.complexGroup cata scale (2) assert_===TestScaledFixtures.complexGroupScaledByTwo
 
   }
+
+  test ("boundingBox works"){
+    TestF
+  }
 }
