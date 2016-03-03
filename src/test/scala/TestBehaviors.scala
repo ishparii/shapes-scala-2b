@@ -11,9 +11,9 @@ class TestBehaviors extends FunSuite {
   import behaviors._
 
   test("size works") {
-    //TestFixtures.simpleRectangle cata size assert_=== 1
-    //TestFixtures.simpleEllipse cata size assert_=== 1
-    //TestFixtures.simpleLocation cata size assert_===1
+    TestFixtures.simpleRectangle cata size assert_=== 1
+    TestFixtures.simpleEllipse cata size assert_=== 1
+    TestFixtures.simpleLocation cata size assert_===1
     TestFixtures.simpleGroup cata size assert_===2
     TestFixtures.basicGroup cata size assert_===2
     TestFixtures.complexGroup cata size assert_===5
@@ -21,12 +21,12 @@ class TestBehaviors extends FunSuite {
   }
 
   test ("depth works") {
-    //TestFixtures.simpleEllipse cata size assert_===1
-    //TestFixtures.simpleEllipse cata size assert_===1
-    //TestFixtures.simpleLocation cata size assert_===1
-    TestFixtures.basicGroup cata size assert_===2
-    TestFixtures.simpleGroup cata size assert_===3
-    TestFixtures.complexGroup cata size assert_===6
+    TestFixtures.simpleEllipse cata depth assert_===1
+    TestFixtures.simpleEllipse cata depth assert_===1
+    TestFixtures.simpleLocation cata depth assert_===2
+    TestFixtures.basicGroup cata depth assert_===2
+    TestFixtures.simpleGroup cata depth assert_===3
+    TestFixtures.complexGroup cata depth assert_===6
 
 
   }

@@ -6,7 +6,7 @@ import scalamu.Algebra
 
 object behaviors {
 
-  val size: Algebra[ShapeF, Int]= {
+  val size: Algebra[ShapeF, Int] = {
     case Rectangle(width, height) => 1
     case Ellipse(majorRadius, minorRadius) => 1
     case Location(x, y, shape) => shape
@@ -14,14 +14,15 @@ object behaviors {
   }
 
 
-  val depth:Algebra[ShapeF,Int]={
-      case Rectangle(width, height)=>1
-      case Ellipse(majorRadius, minorRadius)=>1
-      case Location(x,y,shape)=> shape+1
-     case Group(shapes@_*)=>shapes.max + 1
-    }
+  val depth: Algebra[ShapeF, Int] = {
+    case Rectangle(width, height) => 1
+    case Ellipse(majorRadius, minorRadius) => 1
+    case Location(x, y, shape) => shape + 1
+    case Group(shapes@_*) => shapes.max + 1
+  }
+}
 
-  //val scale:Algebra[ShapeF,ShapeF]={
+  //val scale:Algebra[ShapeF,shape]={
     //case Rectangle(width, height)=> Rectangle(width*f, height*f)
 
   //}
@@ -32,7 +33,7 @@ object behaviors {
 
 
 
-  }
+
 
 
 
