@@ -1,6 +1,7 @@
 
+import edu.luc.cs.laufer.cs372.shapes.structures
 import edu.luc.cs.laufer.cs372.shapes.structures._
-
+import structures.ShapeFactory._
 import scalamu.Algebra
 
 
@@ -20,15 +21,20 @@ object behaviors {
     case Location(x, y, shape) => shape + 1
     case Group(shapes@_*) => shapes.max + 1
   }
-}
 
-  //val scale:Algebra[ShapeF,shape]={
-    //case Rectangle(width, height)=> Rectangle(width*f, height*f)
 
-  //}
+  val scale: Int =>Algebra[ShapeF,Shape]=f=> {
+    case Rectangle(width, height) => rectangle(width * f, height * f)
+    case Ellipse(majorRadius, minorRadius) => ellipse(majorRadius * f, minorRadius * f)
+    case Location(x, y, shape) => location(x * f, y * f, shape)
+    case Group(shapes@_*) => group(shapes: _*)
 
- // val boundingBox:Algebra[ShapeF, Location]={
-   // case Rectangle()
+
+  }
+  }
+
+  //val boundingBox:Algebra[ShapeF, Location]={
+   //case Rectangle()
   //}
 
 

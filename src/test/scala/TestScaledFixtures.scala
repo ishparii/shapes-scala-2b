@@ -1,32 +1,33 @@
-//package edu.luc.cs.laufer.cs372.shapes
-//
-//object TestScaledFixtures {
-//
-//  val simpleEllipseScaledByTwo = Ellipse(100, 60)
-//
-//  val simpleRectangleScaledByTwo = Rectangle(160, 240)
-//
-//  val simpleLocationScaledByTwo = Location(140, 60, Rectangle(160, 240))
-//
-//  val basicGroupScaledByTwo = Group(Ellipse(100, 60), Rectangle(40, 80))
-//
-//  val simpleGroupScaledByTwo = Group(
-//    Location(400, 200, Ellipse(100, 60)),
-//    Location(800, 600, Rectangle(200, 100))
-//  )
-//
-//  val complexGroupScaledByTwo =
-//    Location(100, 200,
-//      Group(
-//        Ellipse(40, 80),
-//        Location(300, 100,
-//          Group(
-//            Rectangle(100, 60),
-//            Rectangle(600, 120),
-//            Location(200, 400,
-//              Ellipse(100, 60)
-//            )
-//          )),
-//        Rectangle(200, 400)
-//      ))
-//}
+package edu.luc.cs.laufer.cs372.shapes
+import structures.ShapeFactory._
+
+object TestScaledFixtures {
+
+  val simpleEllipseScaledByTwo = ellipse(100, 60)
+
+  val simpleRectangleScaledByTwo = rectangle(160, 240)
+
+  val simpleLocationScaledByTwo = location(140, 60, rectangle(160, 240))
+
+  val basicGroupScaledByTwo = group(ellipse(100, 60), rectangle(40, 80))
+
+  val simpleGroupScaledByTwo = group(
+    location(400, 200, ellipse(100, 60)),
+    location(800, 600, rectangle(200, 100))
+  )
+
+  val complexGroupScaledByTwo =
+    location(100, 200,
+      group(
+        ellipse(40, 80),
+        location(300, 100,
+          group(
+            rectangle(100, 60),
+            rectangle(600, 120),
+            location(200, 400,
+              ellipse(100, 60)
+            )
+          )),
+        rectangle(200, 400)
+      ))
+}

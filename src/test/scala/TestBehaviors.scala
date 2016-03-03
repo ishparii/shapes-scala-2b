@@ -1,5 +1,6 @@
 
 import edu.luc.cs.laufer.cs372.TestFixtures
+import edu.luc.cs.laufer.cs372.shapes.TestScaledFixtures
 import org.scalatest.FunSuite
 import scalaz.syntax.equal._
 import scalaz.std.anyVal._ // for assert_=== to work on Int
@@ -28,6 +29,16 @@ class TestBehaviors extends FunSuite {
     TestFixtures.simpleGroup cata depth assert_===3
     TestFixtures.complexGroup cata depth assert_===6
 
+
+  }
+
+  test ("scale works"){
+    TestFixtures.simpleEllipse cata scale (2) assert_===TestScaledFixtures.simpleEllipseScaledByTwo
+    TestFixtures.simpleRectangle cata scale (2) assert_===TestScaledFixtures.simpleRectangleScaledByTwo
+    TestFixtures.simpleLocation cata scale (2) assert_===TestScaledFixtures.simpleLocationScaledByTwo
+    TestFixtures.basicGroup cata scale (2) assert_===TestScaledFixtures.basicGroupScaledByTwo
+    TestFixtures.simpleGroup cata scale (2) assert_===TestScaledFixtures.simpleGroupScaledByTwo
+    TestFixtures.complexGroup cata scale (2) assert_===TestScaledFixtures.complexGroupScaledByTwo
 
   }
 }
