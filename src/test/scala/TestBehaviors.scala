@@ -1,10 +1,11 @@
 
 import edu.luc.cs.laufer.cs372.TestFixtures
-import edu.luc.cs.laufer.cs372.shapes.TestScaledFixtures
+import edu.luc.cs.laufer.cs372.shapes.{structures, TestScaledFixtures}
 import org.scalatest.FunSuite
 import scalaz.syntax.equal._
 import scalaz.std.anyVal._ // for assert_=== to work on Int
 //import scalaz.std.option._ // for assert_=== to work on Option
+import structures.ShapeFactory._
 
 class TestBehaviors extends FunSuite {
 
@@ -43,6 +44,9 @@ class TestBehaviors extends FunSuite {
   }
 
   test ("boundingBox works"){
-    TestF
+    TestFixtures.simpleEllipse cata boundingBox assert_=== location(-50,-30,rectangle(100,60))
+    TestFixtures.simpleRectangle cata boundingBox assert_=== location(0,0,rectangle(80,120))
+    TestFixtures.simpleLocation cata boundingBox assert_=== location(70,30,rectangle(80,120))
+
   }
 }
