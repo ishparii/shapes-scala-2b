@@ -2,7 +2,7 @@
 import edu.luc.cs.laufer.cs372.shapes.structures
 import edu.luc.cs.laufer.cs372.shapes.structures._
 import structures.ShapeFactory._
-import scalamu.Algebra
+import scalamu.{In, Algebra}
 
 
 object behaviors {
@@ -32,16 +32,19 @@ object behaviors {
 
   }
 
-  val boundingBox: Algebra[ShapeF, Shape] = {
-    case Rectangle(width, height)=> location(0,0, rectangle(width,height))
-    case Ellipse(minorRadius,majorRadius)=> location(-minorRadius,-majorRadius, rectangle(2*minorRadius,2*majorRadius))
-    case Location(x,y,shape)=>
-      {
-        val loc=shape.asInstanceOf[Location]
-        location(x+loc.x,y+loc.y,shape)
-      }
-
-
+  val boundingBox: Algebra[ShapeF, Location[Rectangle]] = {
+    case Rectangle(width, height )=> Location(0, 0, Rectangle(width, height))
+    case Ellipse(majorRadius,minorRadius) => Location(-majorRadius, -minorRadius, Rectangle(majorRadius*2, minorRadius*2))
+    case Location(x,y,shape) => Location(x+shape.x, y+shape.y, shape.shape)
+    case Group(shapes @ _*) => {
+      val xList = shapes.flatMap(shape => List(shape.x, shape.x+shape.shape.width))
+      val yList = shapes.flatMap(shape => List(shape.y, shape.y+shape.shape.height))
+      val xMin = xList.min
+      val xMax = xList.max
+      val yMin = yList.min
+      val yMax = yList.max
+      Location(xMin, yMin, Rectangle(xMax-xMin, yMax-yMin))
+    }
   }
 }
 
