@@ -2,7 +2,7 @@
 import edu.luc.cs.laufer.cs372.shapes.structures
 import edu.luc.cs.laufer.cs372.shapes.structures._
 import structures.ShapeFactory._
-import scalamu.{In, Algebra}
+import scalamu.Algebra
 
 
 object behaviors {

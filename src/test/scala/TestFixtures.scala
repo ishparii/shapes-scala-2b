@@ -1,9 +1,7 @@
 package edu.luc.cs.laufer.cs372
 
 import edu.luc.cs.laufer.cs372.shapes.structures
-
 import structures.ShapeFactory._
-
 
 
 object TestFixtures {

@@ -1,12 +1,11 @@
 
 import edu.luc.cs.laufer.cs372.TestFixtures
-import edu.luc.cs.laufer.cs372.shapes.structures.{Rectangle, Location}
-import edu.luc.cs.laufer.cs372.shapes.{structures, TestScaledFixtures}
+import edu.luc.cs.laufer.cs372.shapes.structures.{ShapeF, Rectangle, Location}
+import edu.luc.cs.laufer.cs372.shapes.TestScaledFixtures
 import org.scalatest.FunSuite
 import scalaz.syntax.equal._
 import scalaz.std.anyVal._ // for assert_=== to work on Int
-//import scalaz.std.option._ // for assert_=== to work on Option
-import structures.ShapeFactory._
+
 
 class TestBehaviors extends FunSuite {
 
@@ -45,12 +44,13 @@ class TestBehaviors extends FunSuite {
   }
 
   test ("boundingBox works"){
-//    TestFixtures.simpleEllipse cata boundingBox assert_=== Location(-50,-30,Rectangle(100,60)))
-    assert((TestFixtures.simpleEllipse cata boundingBox) === Location(-50,-30,Rectangle(100,60)))
-    assert((TestFixtures.simpleRectangle cata boundingBox) === Location(0,0,Rectangle(80,120)))
-    assert((TestFixtures.simpleLocation cata boundingBox) === Location(70,30,Rectangle(80,120)))
-    assert((TestFixtures.basicGroup cata boundingBox) === Location(-50, -30, Rectangle(100, 70)))
-    assert((TestFixtures.simpleGroup cata boundingBox) === Location(150, 70, Rectangle(350, 280)))
-    assert((TestFixtures.complexGroup cata boundingBox) === Location(30, 60, Rectangle(470, 320)))
+    //build a wrapper for convenience
+    def w(v: Location[Rectangle]): ShapeF[ShapeF[Unit]] = v
+    w(TestFixtures.simpleEllipse cata boundingBox) assert_=== w(Location(-50,-30,Rectangle(100,60)))
+    w(TestFixtures.simpleRectangle cata boundingBox) assert_=== w(Location(0,0,Rectangle(80,120)))
+    w(TestFixtures.simpleLocation cata boundingBox) assert_=== w(Location(70,30,Rectangle(80,120)))
+    w(TestFixtures.basicGroup cata boundingBox) assert_=== w(Location(-50, -30, Rectangle(100, 70)))
+    w(TestFixtures.simpleGroup cata boundingBox) assert_=== w(Location(150, 70, Rectangle(350, 280)))
+    w(TestFixtures.complexGroup cata boundingBox) assert_=== w(Location(30, 60, Rectangle(470, 320)))
   }
 }
